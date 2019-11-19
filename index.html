@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Codage</title>
+	<style type="text/css">
+		body{
+			font-size: 25px;
+		}
+		.container{
+				width: 1200px; 
+				margin: auto;
+				margin-top: 200px; 
+			}
+		.form{
+				padding: 10px;
+				width: 400px;
+				height: 200px;
+				margin: auto;
+				text-align: center;
+				background-color: green;
+
+		}
+		input{
+				margin: 10px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<center><h1>Codage</h1></center>
+		<div class="form">
+				<label>	Entré un nombre :</label><br>
+				<input type="text" name="decimal" id="decimal"><br>
+				Binaire <input type="radio" name="radio" id="Binaire" checked="true">
+				Octal <input type="radio" name="radio" id="octal">
+				Hexadécimal <input type="radio" name="radio" id="Hexa"><br>
+				<input type="button" name="button" value="Converter" onclick="decimal();">
+				<p id="resultat" style=" border: 1px solid; background-color: #fff"></p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function decimal() {
+					var decimal = document.getElementById("decimal").value;
+					var x = document.getElementById("Binaire").checked;
+					var y = document.getElementById("octal").checked;
+					var z = document.getElementById("Hexa").checked;
+						if (x == true) {
+							 var notLast = true;  
+							  var binaries = []; 
+							  var number = decimal;
+							        var i = 0;  
+					         while(notLast){    
+					          binaries[i] = number % 2;    
+					           number = Math.floor(number / 2);   
+					             if(number === 0){
+					                	notLast = false;     
+					                  }    
+					                     i++;
+					           		   }
+					       		document.getElementById("resultat").innerHTML = binaries.reverse();
+
+						}
+						else if (y) {
+							
+									  var notLast = true;
+									  var binaries = [];
+									  var number = decimal;
+									  var i = 0;
+									  while(notLast){
+									    binaries[i] = number % 8;
+									    number = Math.floor(number / 8);
+									    if(number === 0){
+									        notLast = false;
+									      }
+									      i++;
+									  }
+								document.getElementById("resultat").innerHTML = binaries.reverse();
+
+									}
+							
+						else if (z) {
+							
+							  var notLast = true;
+							  var binaries = [];
+							  var number = decimal;
+							  var i = 0;
+							  while(notLast){
+							    if(number%16==10){
+							      binaries[i] = "A";
+							    }
+							    else if(number%16==11){
+							      binaries[i] = "B";
+							    }
+							    else if(number%16==12){
+							      binaries[i] = "C";
+							    }
+							    else if(number%16==13){
+							      binaries[i] = "D";
+							    }
+							    else if(number%16==14){
+							      binaries[i] = "E";
+							    }
+							    else if(number%16==15){
+							      binaries[i] = "F";
+							    }else{
+							      binaries[i] = number % 16;
+							    }
+
+							    number = Math.floor(number / 16);
+							    if(number === 0){
+							        notLast = false;
+							      }
+							      i++;
+							  }
+
+							document.getElementById("resultat").innerHTML = binaries.reverse();
+
+							  
+
+							}						
+					}
+		
+
+	</script>
+</body>
+</html>
